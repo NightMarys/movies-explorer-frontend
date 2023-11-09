@@ -1,20 +1,30 @@
-import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import React from "react";
+import "./MoviesCardList.css";
+import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({ cards, saved  }) => {
+function MoviesCardList(props) {
+  const { moviesList, saved, onClickMore } = props;
+
   return (
-    <section className='movies'>
-      <ul className='movies__card-list'>
-        {cards.map((card) => (
-          <MoviesCard />
+    <section className="movies">
+      <ul className="movies__card-list">
+        {moviesList.map((movie) => (
+          <MoviesCard
+            movie={movie}
+            onCardClick={() => {}}
+            key={movie.movieId}
+            onCardLike={() => {}}
+            onCardDelete={() => {}}
+            saved={saved}
+          />
         ))}
       </ul>
-      <div className='movies__wrapper'>
+      <div className="movies__wrapper">
         {!saved && (
           <button
-            type='button'
-            className='movies__button-more'
-           // onClick={onClickMore}
+            type="button"
+            className="movies__button-more"
+            onClick={onClickMore}
           >
             Ещё
           </button>
@@ -22,7 +32,6 @@ const MoviesCardList = ({ cards, saved  }) => {
       </div>
     </section>
   );
-};
-
+}
 
 export default MoviesCardList;

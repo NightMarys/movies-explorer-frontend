@@ -1,13 +1,11 @@
-import React from 'react';
-import './Profile.css';
+import React from "react";
+import "./Profile.css";
 
-import { useNavigate } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-
+import { useNavigate } from "react-router-dom";
+// import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const Profile = ({ onSubmit, setLoggedIn }) => {
-
-    const currentUser = React.useContext(CurrentUserContext);
+  // const currentUser = React.useContext(CurrentUserContext);
   const [value, setValue] = React.useState({});
   const navigate = useNavigate();
 
@@ -22,60 +20,61 @@ const Profile = ({ onSubmit, setLoggedIn }) => {
 
   const onSignOut = () => {
     setLoggedIn(false);
-    navigate('/', { replace: true });
+    navigate("/", { replace: true });
   };
 
   return (
-
-        <section className='profile'>
-          <h1 className='profile__title'>Привет, {currentUser.name}!</h1>
-          <form className="profile__form" onSubmit={handleSubmit} >
-          <ul className="profile__input-list">
-            <li className="profile__input-wrapper">
-              <h3 className="profile__input-name">Имя</h3>
-              <input 
-                value={value.name || ""}
-                onChange={handleChange}
-                id="name-input" 
-                name="name" 
-                type="text" 
-                placeholder="Имя" 
-                className="profile__input profile__input_data_name" 
-                required 
-                minLength="2" 
-                maxLength="200"
-
-              />
-            </li>
-            <li className="profile__input-wrapper">
-              <h3 className="profile__input-name">E-mail</h3>
-              <input 
-                value={value.email || ""}
-                onChange={handleChange}
-                id="email-input" 
-                name="email" 
-                type="text" 
-                placeholder="Email" 
-                className="profile__input profile__input_data_email" 
-                required
-                minLength="2" 
-                maxLength="40"
-
-              />
-            </li>
-          </ul>
-          <button className="profile__button-save" type ="submit"
-                            aria-label="saveButton">Редактировать
-                        </button>
-        </form>
-          <button
-            type='button'
-            className='profile__submit-button'
-            onClick={onSignOut}
-          >
-            Выйти из аккаунта
-          </button>
-        </section>
+    <section className="profile">
+      <h1 className="profile__title">Привет, !</h1>
+      <form className="profile__form" onSubmit={handleSubmit}>
+        <ul className="profile__input-list">
+          <li className="profile__input-wrapper">
+            <h3 className="profile__input-name">Имя</h3>
+            <input
+              value={value.name || ""}
+              onChange={handleChange}
+              id="name-input"
+              name="name"
+              type="text"
+              placeholder="Имя"
+              className="profile__input profile__input_data_name"
+              required
+              minLength="2"
+              maxLength="200"
+            />
+          </li>
+          <li className="profile__input-wrapper">
+            <h3 className="profile__input-name">E-mail</h3>
+            <input
+              value={value.email || ""}
+              onChange={handleChange}
+              id="email-input"
+              name="email"
+              type="text"
+              placeholder="Email"
+              className="profile__input profile__input_data_email"
+              required
+              minLength="2"
+              maxLength="40"
+            />
+          </li>
+        </ul>
+        <button
+          className="profile__button-save"
+          type="submit"
+          aria-label="saveButton"
+        >
+          Редактировать
+        </button>
+      </form>
+      <button
+        type="button"
+        className="profile__submit-button"
+        onClick={onSignOut}
+      >
+        Выйти из аккаунта
+      </button>
+    </section>
   );
 };
 

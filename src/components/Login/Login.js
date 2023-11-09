@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Login.css';
+import "./Login.css";
 
 function Login(props) {
-  const { handleLogin } = props;
+  const { setLoggedIn } = props;
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -17,7 +16,7 @@ function Login(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    handleLogin(password, email);
+    setLoggedIn(password, email);
   }
 
   return (
@@ -49,7 +48,7 @@ function Login(props) {
           minLength="6"
         />
         <button type="submit" className="auth__save-btn">
-        Войти
+          Войти
         </button>
         <Link to="/signin" className="auth__link">
           Уже зарегистрированы? Войти

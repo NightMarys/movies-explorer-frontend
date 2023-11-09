@@ -1,5 +1,4 @@
 .page {
-    width: 100%;
     min-width: 320px;
     box-sizing: border-box;
     background-color: #202020;
@@ -13,6 +12,6 @@
 }
 
 .page__container {
-    margin: 0 auto;
-
+    margin: 0;
+    width: 100%;
 }

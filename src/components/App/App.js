@@ -1,112 +1,76 @@
 import React from "react";
-import {
-    Routes,
-    Route,
-    Navigate,
-  } from "react-router-dom";
-import './App.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import Error from '../Error/Error';
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
+import Error from "../Error/Error";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 // import ProtectedRoute from "../ProtectedRoute";
-import api from "../../utils/Api";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ROUTS } from '../../utils/constants';
-  
-const {
-    mainPath,
-    loginPath,
-    registerPath,
-    moviesPath,
-    savedMoviesPath,
-    profilePath,
-    otherPath,
-  } = ROUTS;
+// import api from "../../utils/Api";
+// import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ROUTS from "../../utils/constants";
 
+const {
+  mainPath,
+  loginPath,
+  registerPath,
+  moviesPath,
+  savedMoviesPath,
+  profilePath,
+  otherPath,
+} = ROUTS;
 
 function App() {
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    const [cards, setCards] = React.useState([]);
-    const [currentUser, setCurrentUser] = React.useState({});
-    const [loggedIn, setLoggedIn] = React.useState(false);
+  const openBurgerMenu = () => {
+    setIsMenuOpen(true);
+  };
 
-    React.useEffect(() => {
-        api
-          .getUserInfo()
-          .then((data) => {
-            setCurrentUser(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, []);
-
-      React.useEffect(() => {
-        api
-          .getInitialCards()
-          .then((serverCards) => {
-            setCards(serverCards);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, []);
-
+  const closeBurgerMenu = () => {
+    setIsMenuOpen(false);
+  };
   return (
-    <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
-        <div className="page__container">
-
-        <Header />
+      <div className="page__container">
+        <Header openMenu={openBurgerMenu} />
         <Routes>
-        <Route
-              path={mainPath}
-              element={<Main />}
-            />
-     <Route
-              path={moviesPath}
-                  element={<Movies 
-                    cards={cards}
-                  />}
+          <Route path={mainPath} element={<Main loggedIn={loggedIn} />} />
+          <Route path={moviesPath} element={<Movies loggedIn={loggedIn} />} />
+          <Route
+            path={savedMoviesPath}
+            element={<SavedMovies loggedIn={loggedIn} />}
+          />
+          <Route path={profilePath} element={<Profile loggedIn={loggedIn} />} />
+          <Route
+            path={registerPath}
+            element={loggedIn ? <Navigate to="/" replace /> : <Register />}
+          />
 
-            />
-            <Route
-              path={savedMoviesPath}
-              element={<SavedMovies />}
+          <Route
+            path={loginPath}
+            element={
+              loggedIn ? (
+                <Navigate to="/movies" replace />
+              ) : (
+                <Login setLoggedIn={setLoggedIn} />
+              )
+            }
+          />
 
-            />
-            <Route
-              path={profilePath}
-              element={<Profile />}
-
-            />
-    
-            <Route
-              path={registerPath}
-              element={<Register  />}
-            />
-
-            <Route
-              path={loginPath}
-              element={<Login  />}
-            />
-            <Route
-              path={otherPath}
-              element={<Error />}
-            />
-    
-          </Routes>
-   
+          <Route path={otherPath} element={<Error />} />
+        </Routes>
+        <BurgerMenu isOpen={isMenuOpen} onClose={closeBurgerMenu} />
         <Footer />
-                </div>
       </div>
-      </CurrentUserContext.Provider>
+    </div>
   );
 }
 

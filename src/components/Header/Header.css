@@ -15,7 +15,7 @@
 }
 
 .header_auth {
-    padding: 56px 14px 50px;
+
     justify-content: center;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .header__button-menu {
-    background-image: url('../../images/MainBtn.svg');
+    background-image: url('../../images/burger.svg');
     background-color: transparent;
     background-position: center;
     background-size: cover;
@@ -166,7 +166,7 @@
 
     .header_auth {
         max-width: 396px;
-        padding: 232px 0 40px;
+
         margin: 0 auto;
         justify-content: flex-start;
     }
@@ -281,9 +281,7 @@
         padding-right: 70px;
     }
 
-    .header_auth {
-        padding: 70px 0 40px;
-    }
+
 }
 
 

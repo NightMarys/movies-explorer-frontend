@@ -1,3 +1,4 @@
+/*
 class Api {
     constructor(options) {
       this._baseUrl = options.baseUrl;
@@ -77,3 +78,4 @@ class Api {
   });
   
   export default api;
+  */
