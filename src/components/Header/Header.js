@@ -13,7 +13,7 @@ function Header(props) {
 
   return (
     <>
-      {pathname !== "/signup" && pathname !== "/signin" && pathname !== "/*" ? (
+      {pathname !== "/signup" && pathname !== "/signin" && pathname !== "*" ? (
         <header className="header">
           <Link className="header__link header__link_logo" to="/">
             <img className="header__logo" src={logo} alt="Логотип" />

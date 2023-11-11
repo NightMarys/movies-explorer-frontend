@@ -40,7 +40,7 @@
 .movies__image {
     display: block;
     width: 100%;
-    aspect-ratio: 1.786;
+
     object-fit: cover;
     box-sizing: border-box;
 }
@@ -60,7 +60,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #313131;
+     background-color: transparent;
     border: none;
     cursor: pointer;
 }
@@ -80,13 +80,10 @@
 
 .movies__favorite-button_active {
     background-image: url('../../images/like-active.svg');
+
 }
 
 @media (min-width: 768px) {
-    .movies__item {
-        width: 339px;
-        height: 279px;
-    }
 
     .movies__title {
         font-size: 13px;
@@ -106,9 +103,3 @@
     }
 }
 
-@media (min-width: 1280px) {
-    .movies__item {
-        width: 270px;
-        height: 240px;
-    }
-}

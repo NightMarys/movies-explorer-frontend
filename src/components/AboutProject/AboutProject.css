@@ -16,7 +16,7 @@
 .about__subtitle {
     font-weight: 400;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 21.78px;
     letter-spacing: -0.72px;
     margin: 0;
     padding-bottom: 16px;
@@ -24,12 +24,16 @@
 
 .about__text {
     margin: 0;
+    font-size: 11px;
+    line-height: 16px;
 }
 
 .about__timeline {
     display: grid;
     grid-template-columns: 100px 1fr;
     margin: 0;
+    font-size: 11px;
+    line-height: 13.31px;
 }
 
 .about__timeline-duration {
@@ -41,7 +45,7 @@
 
 .about__timeline-duration:first-of-type {
     background-color: #3DDC84;
-
+color: #000000;
 }
 
 .about__timeline-name {
@@ -52,7 +56,7 @@
     line-height: 12px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
 
     .about {
         padding: 0 50px 90px;
@@ -61,13 +65,13 @@
     .about__subtitle {
         font-size: 20px;
         letter-spacing: -0.8px;
-        line-height: 24px;
+        line-height: 24.2px;
         padding-bottom: 22px;
     }
 
     .about__text {
-        font-size: var(--text-tablet);
-        line-height: var(--height-tablet);
+        font-size: 12px;
+        line-height: 18px;
     }
 
     .about__list {
@@ -81,7 +85,7 @@
     .about__timeline {
         grid-template-columns: 140px 1fr;
         font-size: 14px;
-        line-height: 17px;
+        line-height: 16.94px;
     }
 
     .about__timeline-duration {
@@ -96,7 +100,7 @@
     }
 }
 
-@media (min-width: 1279px) {
+@media screen and (min-width: 1279px) {
 
     .about {
         padding: 0 70px 105px;
@@ -107,13 +111,13 @@
         padding-bottom: 110px;
     }
 
-    .about__subtitle {
-        padding-bottom: 26px;
+    .about__text {
+        font-size: 14px;
+        line-height: 20px;
     }
 
-    .about__description {
-        font-size: var(--text-desktop);
-        line-height: var(--height-desktop);
+    .about__subtitle {
+        padding-bottom: 26px;
     }
 
     .about__timeline {

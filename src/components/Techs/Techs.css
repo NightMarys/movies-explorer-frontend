@@ -9,9 +9,9 @@
 }
 
 .techs__title {
-    font-size: 30px;
     font-weight: 400;
-    line-height: normal;
+    font-size: 30px;
+    line-height: 36.31px;
     letter-spacing: -1.2px;
     text-align: center;
     margin: 60px auto 24px;
@@ -21,6 +21,8 @@
     letter-spacing: -0.44px;
     margin: 0 auto 50px;
     text-align: center;
+    font-size: 11px;
+    line-height: 16px;
 }
 
 .techs__list {
@@ -40,7 +42,7 @@
     line-height: normal;
 
     border-radius: 10px;
-    background-color: var(--color-grey30);
+    background-color: #303030;
     display: flex;
     justify-content: center;
     align-items: center;

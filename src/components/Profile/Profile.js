@@ -1,13 +1,12 @@
 import React from "react";
 import "./Profile.css";
-
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const Profile = ({ onSubmit, setLoggedIn }) => {
+const Profile = ({ onSubmit }) => {
   // const currentUser = React.useContext(CurrentUserContext);
   const [value, setValue] = React.useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function handleChange(evt) {
     setValue({ ...value, [evt.target.name]: evt.target.value });
@@ -17,11 +16,12 @@ const Profile = ({ onSubmit, setLoggedIn }) => {
     evt.preventDefault();
     onSubmit();
   }
-
+  /*
   const onSignOut = () => {
     setLoggedIn(false);
     navigate("/", { replace: true });
   };
+*/
 
   return (
     <section className="profile">
@@ -67,13 +67,9 @@ const Profile = ({ onSubmit, setLoggedIn }) => {
           Редактировать
         </button>
       </form>
-      <button
-        type="button"
-        className="profile__submit-button"
-        onClick={onSignOut}
-      >
+      <Link to="/" className="profile__submit-button">
         Выйти из аккаунта
-      </button>
+      </Link>
     </section>
   );
 };

@@ -40,15 +40,46 @@ function App() {
   return (
     <div className="page">
       <div className="page__container">
-        <Header openMenu={openBurgerMenu} />
         <Routes>
-          <Route path={mainPath} element={<Main loggedIn={loggedIn} />} />
-          <Route path={moviesPath} element={<Movies loggedIn={loggedIn} />} />
+          <Route
+            path={mainPath}
+            element={
+              <>
+                <Header openMenu={openBurgerMenu} />
+                <Main loggedIn={loggedIn} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path={moviesPath}
+            element={
+              <>
+                <Header openMenu={openBurgerMenu} />
+                <Movies loggedIn={loggedIn} />
+                <Footer />
+              </>
+            }
+          />
           <Route
             path={savedMoviesPath}
-            element={<SavedMovies loggedIn={loggedIn} />}
+            element={
+              <>
+                <Header openMenu={openBurgerMenu} />
+                <SavedMovies loggedIn={loggedIn} />
+                <Footer />
+              </>
+            }
           />
-          <Route path={profilePath} element={<Profile loggedIn={loggedIn} />} />
+          <Route
+            path={profilePath}
+            element={
+              <>
+                <Header openMenu={openBurgerMenu} />
+                <Profile loggedIn={loggedIn} />
+              </>
+            }
+          />
           <Route
             path={registerPath}
             element={loggedIn ? <Navigate to="/" replace /> : <Register />}
@@ -68,7 +99,6 @@ function App() {
           <Route path={otherPath} element={<Error />} />
         </Routes>
         <BurgerMenu isOpen={isMenuOpen} onClose={closeBurgerMenu} />
-        <Footer />
       </div>
     </div>
   );

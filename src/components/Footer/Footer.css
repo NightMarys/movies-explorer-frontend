@@ -1,5 +1,5 @@
 .footer {
-    padding: 79px 10px 20px;
+    padding: 79px 0 20px;
     font-size: 12px;
     text-align: center;
     line-height: 15px;
@@ -89,7 +89,7 @@
 
 @media (min-width: 1280px) {
     .footer {
-        padding: 0 70px;
+        padding: 69px 70px 20px;
     }
 
 }

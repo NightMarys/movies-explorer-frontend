@@ -1,6 +1,7 @@
 .nav__list {
     width: 100%;
     font-weight: 500;
+    font-size: 11px;
     text-decoration: underline;
     text-underline-offset: 3px;
     padding: 25px 0;

@@ -4,7 +4,7 @@ import "./SearchForm.css";
 
 function SearchForm() {
   return (
-    <section className="search-form">
+    <div className="search-form">
       <form className="search-form__search" noValidate>
         <input
           id="movie-input"
@@ -14,11 +14,13 @@ function SearchForm() {
           className="search-form__input"
           required
         />
-        <button className="search-form__button"></button>
+        <button type="button" className="search-form__button"></button>
       </form>
-
-      <span className="search-form__line"></span>
-    </section>
+      <div className="search-form__box">
+        <input className="search-form__checkbox" type="checkbox" />
+        <h2 className="search-form__checkbox-name"> Короткометражки </h2>
+      </div>
+    </div>
   );
 }
 

@@ -3,9 +3,31 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 0;
+    margin: 0 auto;
     padding: 56px 30px 30px;
-    align-items: center;
+    
+}
+
+.auth__logo {
+    min-width: 38px;
+    min-height: 38px;
+
+}
+
+.auth__link_logo {
+    border-radius: 50%;
+}
+
+.auth__link {
+    cursor: pointer;
+    border: none;
+    color: #4285F4;
+    text-decoration: none;
+}
+
+.auth__title {
+    text-align: start;
+
 }
 
 @media screen and (min-width: 767px) {
@@ -13,15 +35,7 @@
         padding: 232px 0 30px;
         min-height: 706px;
         align-items: start;
-        margin: 0 auto;
-
-    }
-
-
-    .auth__title {
-        text-align: start;
-        padding: 40px 0;
-    }
+    } 
 }
 
 @media screen and (min-width: 1280px) {
@@ -31,7 +45,8 @@
 }
 
 .auth__form {
-    margin: 0 auto 80px;
+    margin: 0;
+    width: 100%;
 }
 
 .auth__input-name {
@@ -46,7 +61,7 @@
 .auth__input {
     all: unset;
     border-bottom: 2px solid #CCCCCC;
-    width: 358px;
+    width: 100%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -58,19 +73,16 @@
     box-sizing: border-box;
 }
 
-.auth__link {
-    cursor: pointer;
-    display: block;
-    font-weight: normal;
+.auth__text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
-    line-height: 17px;
-    border: none;
-    padding: 0;
-    margin: 15px auto 0;
-    color: #fff;
-    text-decoration: none;
+    line-height: 16.94px;
+    color: #8B8B8B;
     text-align: center;
     align-self: center;
+
 }
 
 .auth__link:hover {
@@ -79,7 +91,7 @@
 
 .auth__save-btn {
     all: unset;
-    width: 358px;
+    width: 100%;
     height: 50px;
     color: #FFFFFF;
     background-color: #4285F4;
@@ -104,7 +116,6 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 29.05px;
-    margin: 20px auto 50px;
+    margin: 20px 0 50px;
     color: #FFFFFF;
-    text-align: center;
 }

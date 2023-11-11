@@ -1,33 +1,25 @@
 .header {
     background-color: #073042;
     font-size: 10px;
-
     width: 100%;
-    max-width: 1280px;
-
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
     position: relative;
-
     padding: 18px 14px;
     box-sizing: border-box;
 }
 
 .header_auth {
-
     justify-content: center;
 }
 
 .header__logo {
-    min-width: 38px;
-    min-height: 38px;
-
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
 }
 
-.header__link_logo {
-    border-radius: 50%;
-}
 
 .header__list {
     display: flex;
@@ -152,7 +144,7 @@
     background-image: url('../../images/HeaderProfile.svg');
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 6px;
+    border-radius: 50%;
     right: 0;
     top: 0;
 }
