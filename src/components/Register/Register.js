@@ -26,14 +26,17 @@ function Register(props) {
   return (
     <main className="content">
       <div className="auth">
-        <Link className="auth__link_logo" to="/">
+        <Link className="auth__link" to="/">
           <img className="auth__logo" src={logo} alt="Логотип" />
         </Link>
         <h1 className="auth__title">Добро пожаловать!</h1>
         <form className="auth__form" onSubmit={handleSubmit}>
-          <h3 className="auth__input-name">Имя</h3>
+          <label htmlFor="name" className="auth__label">
+            Имя
+          </label>
           <input
-            type="name"
+            type="text"
+            id="name"
             className="auth__input"
             name="name"
             placeholder="Name"
@@ -42,9 +45,12 @@ function Register(props) {
             maxLength="30"
             onChange={handleName}
           />
-          <h3 className="auth__input-name">E-mail</h3>
+          <label htmlFor="email" className="auth__label">
+            E-mail
+          </label>
           <input
             type="email"
+            id="email"
             className="auth__input"
             name="email"
             placeholder="Email"
@@ -54,11 +60,13 @@ function Register(props) {
             value={email || ""}
             onChange={handleEmail}
           />
-          <h3 className="auth__input-name">Пароль</h3>
+          <label htmlFor="password" className="auth__label">
+            Пароль
+          </label>
           <input
             type="password"
             className="auth__input"
-            id="password-input"
+            id="password"
             name="password"
             placeholder="Пароль"
             required
@@ -71,9 +79,9 @@ function Register(props) {
           </button>
         </form>
         <p className="auth__text">
-          Ещё не зарегистрированы?&nbsp;
-          <Link to="/signup" className="auth__link">
-            Регистрация
+          Уже зарегистрированы?&nbsp;
+          <Link to="/signin" className="auth__link">
+            Войти
           </Link>
         </p>
       </div>

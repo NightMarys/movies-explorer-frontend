@@ -10,22 +10,9 @@
 .profile__title {
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.21;
-    letter-spacing: 0em;
+    line-height: 29.05px;
     text-align: center;
     margin: 74px 0 123px;
-}
-
-@media screen and (max-width: 1024px) {
-    .profile__title {
-        margin: 236px 0 96px;
-    }
-}
-
-@media screen and (max-width: 568px) {
-    .profile__title {
-        margin: 70px 0 80px;
-    }
 }
 
 .profile__form {
@@ -35,32 +22,14 @@
 
 .profile__input-list {
     list-style: none;
-    margin: 0 0 200px;
+    margin: 0 0 220px;
     padding: 0;
-}
-
-@media screen and (max-width: 1024px) {
-    .profile__input-list {
-        margin-bottom: 190px;
-    }
-}
-
-@media screen and (max-width: 568px) {
-    .profile__input-list {
-        margin-bottom: 359px;
-    }
 }
 
 .profile__input-wrapper {
     display: flex;
     width: 410px;
     justify-content: space-between;
-}
-
-@media screen and (max-width: 568px) {
-    .profile__input-wrapper {
-        width: 260px;
-    }
 }
 
 .profile__input-wrapper:first-child {
@@ -72,7 +41,7 @@
     padding-top: 17px;
 }
 
-.profile__input-name {
+.profile__label {
     font-size: 11px;
     font-weight: 500;
     line-height: 1.18;
@@ -99,21 +68,16 @@
 
 .profile__submit-button {
     text-align: center;
+    text-decoration: none;
     color: #ee3465;
     background-color: transparent;
     border: none;
     padding: 0;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
-    line-height: 15px;
+    line-height: 15.73px;
     cursor: pointer;
     margin: 16px auto 40px;
-}
-
-@media screen and (max-width: 568px) {
-    .profile__submit-button {
-        width: 260px;
-    }
 }
 
 .profile__submit-button:hover {
@@ -140,7 +104,6 @@
 }
 
 .profile__button-save {
-
     opacity: 1;
     transition: opacity 0.3s ease;
     border: none;
@@ -148,7 +111,7 @@
     background-color: transparent;
     cursor: pointer;
     line-height: 15px;
-    font-size: 12px;
+    font-size: 13px;
     color: #FFF;
 }
 
@@ -156,10 +119,35 @@
     opacity: 0.8;
 }
 
+@media screen and (max-width: 1024px) {
+    .profile__title {
+        margin: 236px 0 96px;
+    }
+
+    .profile__input-list {
+        margin-bottom: 210px;
+    }
+}
 
 @media screen and (max-width: 568px) {
     .profile__button {
         font-size: 12px;
         line-height: 1.21;
+    }
+
+    .profile__submit-button {
+        width: 260px;
+    }
+
+    .profile__title {
+        margin: 70px 0 80px;
+    }
+
+    .profile__input-list {
+        margin-bottom: 379px;
+    }
+
+    .profile__input-wrapper {
+        width: 260px;
     }
 }

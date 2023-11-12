@@ -11,7 +11,7 @@
   .burger__backdrop {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -52,45 +52,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 27px;
+    gap: 28px;
     margin-top: 160px;
     padding: 0;
+    list-style: none;
   }
   
-  .burger-link {
+  .burger__link {
     text-decoration: none;
     font-weight: 500;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 21.78px;
     padding-bottom: 6px;
     color: #FFFFFF;
     transition: 0.3s ease;
   }
   
-  .burger-link_active {
+  .burger__link_active {
     text-decoration: none;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
     padding-bottom: 4px;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #FFFFFF;
     transition: 0.3s ease;
   }
   
-  .burger__button_account {
-    padding: 8px 20px;
+  .burger__button {
+
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
     color: #FFFFFF;
     border: none;
-  
     background-color: #202020;
     cursor: pointer;
     transition: 0.3s ease;
-    margin-bottom: 90px;
+    padding-bottom: 90px;
+    position: relative;
   }
+
+  .burger__button::before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: #313131;
+    background-image: url('../../images/HeaderProfile.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    right: -38px;
+    top: -5px;
+}
   
   @media screen and (min-width: 769px) {
     .burger {

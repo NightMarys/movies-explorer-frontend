@@ -4,17 +4,13 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesList from "../../utils/moviesList";
 
 function Movies() {
-  const [maxMovies, setMaxMovies] = React.useState(8);
-  function handleClickMore() {
-    setMaxMovies(() => maxMovies + 2);
-  }
   return (
     <main className="content">
       <SearchForm />
       <MoviesCardList
         saved={false}
-        moviesList={moviesList.slice(0, maxMovies)}
-        onClickMore={handleClickMore}
+        moviesList={moviesList}
+        // onClickMore={handleClickMore}
       />
     </main>
   );

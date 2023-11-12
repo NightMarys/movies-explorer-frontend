@@ -23,7 +23,7 @@ function Login(props) {
   return (
     <main className="content">
       <div className="auth">
-        <Link className="auth__link_logo" to="/">
+        <Link className="auth__link" to="/">
           <img className="auth__logo" src={logo} alt="Логотип" />
         </Link>
         <h1 className="auth__title">Рады видеть!</h1>
@@ -52,14 +52,14 @@ function Login(props) {
             onChange={handlePassword}
             minLength="6"
           />
-          <button type="submit" className="auth__save-btn">
+          <button type="submit" className="auth__save-btn auth__save-btn_l">
             Войти
           </button>
         </form>
         <p className="auth__text">
-          Уже зарегистрированы?
-          <Link to="/signin" className="auth__link">
-            Войти
+          Ещё не зарегистрированы?&nbsp;
+          <Link to="/signup" className="auth__link">
+            Регистрация
           </Link>
         </p>
       </div>

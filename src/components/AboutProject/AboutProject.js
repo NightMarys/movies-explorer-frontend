@@ -25,8 +25,8 @@ function AboutProject() {
         </li>
       </ul>
       <div className="about__timeline">
-        <div className="about__timeline-duration">1 неделя</div>
-        <div className="about__timeline-duration">4 недели</div>
+        <p className="about__timeline-duration">1 неделя</p>
+        <p className="about__timeline-duration">4 недели</p>
         <p className="about__timeline-name">Back-end</p>
         <p className="about__timeline-name">Front-end</p>
       </div>

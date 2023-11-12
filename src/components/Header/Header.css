@@ -10,6 +10,9 @@
     box-sizing: border-box;
 }
 
+.header_loggedin {
+    background-color: #202020;
+}
 .header_auth {
     justify-content: center;
 }

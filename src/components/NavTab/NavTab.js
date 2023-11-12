@@ -6,7 +6,7 @@ import "./NavTab.css";
 
 function NavTab() {
   return (
-    <section className="nav">
+    <div className="nav">
       <Navigation>
         <ul className="nav__list">
           <li className="nav__item">
@@ -26,7 +26,7 @@ function NavTab() {
           </li>
         </ul>
       </Navigation>
-    </section>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@
   margin: 0;
   background-image: url(../../images/promo.svg);
   background-repeat: no-repeat;
-  background-position: center 82px;
+  background-position: center;
   background-size: 320px;
   display: flex; 
   flex-direction: column;
@@ -20,15 +20,15 @@
   line-height: 58px;
   text-align: center;
   font-weight: 400;
-padding-bottom: 45px;
   max-width: 730px;
-
+  margin: 0;
+  letter-spacing: -2px;
 }
 
 @media screen and (max-width: 769px) { 
 
   .promo__title { 
-    max-width: 700px; 
+    letter-spacing: -1.24px;
     width: calc(100% - 2*20px); 
     
   } 

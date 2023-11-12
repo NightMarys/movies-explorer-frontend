@@ -6,6 +6,10 @@ import movieFive from "../images/movies/5.jpg";
 import movieSix from "../images/movies/6.jpg";
 import movieSeven from "../images/movies/7.jpg";
 import movieEight from "../images/movies/8.jpg";
+import movieNine from "../images/movies/9.jpg";
+import movieTen from "../images/movies/10.jpg";
+import movieEleven from "../images/movies/11.jpg";
+import movieTwelve from "../images/movies/12.jpg";
 
 const moviesList = [
   {
@@ -118,6 +122,62 @@ const moviesList = [
     owner: "",
     movieId: 8,
     nameRU: "Gimme Danger: История Игги и The Stooges",
+    nameEN: "",
+  },
+  {
+    country: "",
+    director: "",
+    duration: 69,
+    year: "",
+    description: "",
+    image: movieNine,
+    trailerLink: "",
+    thumbnail: "",
+    owner: "",
+    movieId: 9,
+    nameRU: "Дженис: Маленькая девочка грустит",
+    nameEN: "",
+  },
+  {
+    country: "",
+    director: "",
+    duration: 83,
+    year: "",
+    description: "",
+    image: movieTen,
+    trailerLink: "",
+    thumbnail: "",
+    owner: "",
+    movieId: 10,
+    nameRU: "Соберись перед прыжком",
+    nameEN: "",
+  },
+  {
+    country: "",
+    director: "",
+    duration: 115,
+    year: "",
+    description: "",
+    image: movieEleven,
+    trailerLink: "",
+    thumbnail: "",
+    owner: "",
+    movieId: 11,
+    nameRU: "Пи Джей Харви: A dog called money",
+    nameEN: "",
+  },
+  {
+    country: "",
+    director: "",
+    duration: 123,
+    year: "",
+    description: "",
+    image: movieTwelve,
+    trailerLink: "",
+    thumbnail: "",
+    owner: "",
+    movieId: 12,
+    nameRU: "По волнам: Искусство звука в кино",
     nameEN: "",
   },
 ];
