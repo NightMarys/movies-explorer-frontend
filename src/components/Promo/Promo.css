@@ -6,11 +6,10 @@
   margin: 0;
   background-image: url(../../images/promo.svg);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 80px;
   background-size: 320px;
   display: flex; 
   flex-direction: column;
-  justify-content: center;
   min-height: 524px;
   align-items: center;
 }
@@ -23,19 +22,20 @@
   max-width: 730px;
   margin: 0;
   letter-spacing: -2px;
+  padding-top: 180px;
 }
 
 @media screen and (max-width: 769px) { 
 
   .promo__title { 
     letter-spacing: -1.24px;
-    width: calc(100% - 2*20px); 
-    
+    width: calc(100% - 2*20px);
+    padding-top: 326px;
   } 
   
   .promo__container {
     min-height: 784px;
-    background-position: center;
+    background-position: center 220px;
   }
 } 
 
@@ -45,10 +45,13 @@
     max-width: 300px;
     font-size: 31px;
     line-height: 39px;
+    padding-top: 200px;
+    letter-spacing: -2px;
   } 
 
   .promo__container {
     min-height: 570px;
     background-size: 248px;
+    background-position: center 142px;
   }
 } 

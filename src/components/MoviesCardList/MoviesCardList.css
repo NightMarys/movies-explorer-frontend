@@ -16,6 +16,16 @@
     gap: 14px;
 }
 
+.movies-card-list__notification {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.21;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 0;
+  }
+
 .movies__button-more {
     font-size: 12px;
     line-height: 15px;

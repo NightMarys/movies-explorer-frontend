@@ -95,10 +95,8 @@ color: #FFFFFF;
 
 @media (min-width: 1280px) {
     .about-me {
-        padding: 0 70px 105px;
+        padding: 0 70px 100px;
     }
-
-
 
     .about-me__title {
         font-size: 50px;

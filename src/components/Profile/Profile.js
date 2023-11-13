@@ -1,44 +1,58 @@
 import React from "react";
 import "./Profile.css";
 import { Link } from "react-router-dom";
-// import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import useValidation from "../../utils/useValidation";
 
-function Profile() {
-  // const currentUser = React.useContext(CurrentUserContext);
-  // const [value, setValue] = React.useState({});
-  // const navigate = useNavigate();
-  /*
-  function handleChange(evt) {
-    setValue({ ...value, [evt.target.name]: evt.target.value });
+function Profile(props) {
+  const currentUser = React.useContext(CurrentUserContext);
+  const [successfulMessage, setSuccessfulMessage] = React.useState("");
+  const [isCurrentUser, setUserDifference] = React.useState(true);
+  const [isEditing, setEditing] = React.useState(false);
+
+  const { formValues, errors, isValid, handleChange, resetForm } =
+    useValidation();
+
+  React.useEffect(() => {
+    currentUser.name !== formValues.name ||
+    currentUser.email !== formValues.email
+      ? setUserDifference(false)
+      : setUserDifference(true);
+  }, [currentUser, formValues]);
+
+  React.useEffect(() => {
+    resetForm(currentUser, false);
+  }, [resetForm, currentUser]);
+
+  React.useEffect(() => {
+    props.onUpdate
+      ? setSuccessfulMessage("Ваша информация успешно обновлена.")
+      : setSuccessfulMessage("");
+  }, [props.onUpdate]);
+
+  function handleEditClick() {
+    setSuccessfulMessage("");
+    setEditing(!isEditing);
   }
 
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit();
-  }
-  
-  const onSignOut = () => {
-    setLoggedIn(false);
-    navigate("/", { replace: true });
+    props.onProfile(formValues.name, formValues.email);
   };
-*/
 
   return (
     <main className="content">
       <section className="profile">
-        <h1 className="profile__title">Привет, !</h1>
-        <form
-          className="profile__form"
-          // onSubmit={handleSubmit}
-        >
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+        <form className="profile__form" onSubmit={handleSubmit}>
           <ul className="profile__input-list">
             <li className="profile__input-wrapper">
               <label htmlFor="name" className="profile__label">
                 Имя
               </label>
               <input
-                // value={value.name || ""}
-                // onChange={handleChange}
+                value={formValues.name || ""}
+                onChange={handleChange}
                 id="name"
                 name="name"
                 type="text"
@@ -47,6 +61,7 @@ function Profile() {
                 required
                 minLength="2"
                 maxLength="200"
+                disabled={isEditing && !props.onLoading ? false : true}
               />
             </li>
             <li className="profile__input-wrapper">
@@ -54,8 +69,8 @@ function Profile() {
                 E-mail
               </label>
               <input
-                // value={value.email || ""}
-                //  onChange={handleChange}
+                value={formValues.email || ""}
+                onChange={handleChange}
                 id="email"
                 name="email"
                 type="text"
@@ -64,6 +79,7 @@ function Profile() {
                 required
                 minLength="2"
                 maxLength="40"
+                disabled={isEditing && !props.onLoading ? false : true}
               />
             </li>
           </ul>
