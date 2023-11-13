@@ -1,0 +1,116 @@
+.movies__item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: #202020;
+    width: 100%;
+}
+
+.movies__info {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    padding: 0 16px 16px;
+}
+
+.movies__heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 17px;
+    position: relative;
+}
+
+.movies__title {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15.73px;
+    margin: 0;
+}
+
+.movies__image {
+    width: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+.movies__duration {
+    font-size: 10px;
+    line-height: 12px;
+    color: #8b8b8b;
+    margin: 0;
+}
+
+.movies__favorite-button {
+    background-image: url('../../images/like-inactive.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 14px;
+    height: 12px;
+
+     background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.movies__delete-button {
+    background-image: url('../../images/movie-delete.svg');
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #313131;
+    border: none;
+    cursor: pointer;
+}
+
+.movies__favorite-button_active {
+    background-image: url('../../images/like-active.svg');
+}
+
+.movies__delete-button:hover,
+.movies__favorite-button_active:hover,
+.movies__favorite-button:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+
+    .movies__title {
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .movies__duration {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .movies__heading {
+        padding-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .movies__title {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+
+    .movies__duration {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .movies__heading {
+        padding: 14px 0;
+    }
+
+    .movies__info {
+        padding: 0 10px 14px;
+    }
+}
+

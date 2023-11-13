@@ -1,0 +1,136 @@
+.auth {
+    max-width: 396px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 70px 0 30px;
+}
+
+.auth__logo {
+    min-width: 38px;
+    min-height: 38px;
+       
+}
+
+.auth__link {
+    cursor: pointer;
+    border: none;
+    color: #4285F4;
+    text-decoration: none;
+}
+
+.auth__title {
+    text-align: start;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29.05px;
+    padding: 40px 0 40px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.auth__form {
+    margin: 0;
+    width: 100%;
+}
+
+.auth__label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12.1px;
+    color: #8B8B8B;
+}
+
+.auth__input {
+    all: unset;
+    height: 46px;
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 10px auto 20px;
+    box-sizing: border-box;
+    background-color: #2F2F2F;
+    border-radius: 8px;
+    padding-left: 15px;
+}
+
+
+.auth__text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #8B8B8B;
+    text-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+.auth__link:hover {
+    opacity: .6;
+}
+
+.auth__save-btn {
+    all: unset;
+    width: 100%;
+    height: 45px;
+    color: #FFFFFF;
+    background-color: #4285F4;
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: center;
+    margin: 70px 0 15px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.auth__save-btn_l {
+    margin: 159px 0 15px;
+}
+
+.auth__save-btn:hover {
+    opacity: .85;
+    transition: opacity .5s ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+    .auth {
+        align-items: center;
+        margin: 0 auto;
+        width: calc(100% - 2*30px);
+        padding: 55px 0 30px;
+    }
+
+    .auth__save-btn {
+        margin: 157px 0 15px;
+        padding: 0;
+    }
+
+    .auth__save-btn_l {
+        margin: 247px 0 15px;
+    }
+
+    .auth__title {
+        padding: 50px 0 80px;
+    }
+
+    .auth__text {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+}
