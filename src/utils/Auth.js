@@ -1,3 +1,4 @@
+
 const BASE_URL = "https://api.thatsmovies.nomoredomainsrocks.ru";
 
 function checkError(res) {
@@ -37,6 +38,7 @@ export const login = (email, password) => {
   }).then(checkError);
 };
 
+
 export const getToken = () => {
   const token = localStorage.getItem("jwt");
   return fetch(`${BASE_URL}/users/me`, {
@@ -49,6 +51,7 @@ export const getToken = () => {
   }).then(checkError);
 };
 
+
 export const logout = () => {
   return fetch(`${this._baseUrl}/signout`, {
     method: "GET",
@@ -58,3 +61,4 @@ export const logout = () => {
     credentials: "include",
   }).then(checkError);
 };
+

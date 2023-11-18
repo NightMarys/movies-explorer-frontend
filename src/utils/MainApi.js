@@ -1,60 +1,70 @@
 class Api {
   constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl.mainApi;
+    this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
   // Метод проверки успешности запроса
-  _getResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
+  _getResponseData(res) {
+    return res.ok
+      ? res.json()
+      : res.json().then((res) => Promise.reject(`${res.message}`));
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
-      credentials: "include",
-    }).then(this._getResponse);
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
+    }).then((res) => this._getResponseData(res));
   }
 
   // Редактирование профиля
   patchUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
       credentials: "include",
       method: "PATCH",
       body: JSON.stringify({
         name: data.name,
         email: data.email,
       }),
-    }).then(this._getResponse);
+    }).then((res) => this._getResponseData(res));
   }
 
   getSavedMovies() {
     return fetch(`${this._baseUrl}/movies`, {
-      method: "GET",
-      headers: this._headers,
-      credentials: "include",
-    }).then(this._getResponse);
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
+    }).then((res) => this._getResponseData(res));
   }
 
   addMovie(data) {
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
       credentials: "include",
       body: JSON.stringify({
+        movieId: data.id,
         country: data.country,
         director: data.director,
         duration: data.duration,
         year: data.year,
         description: data.description,
-        image: `${this._apiURL}${data.image.url}`,
+        image: `${"https://api.nomoreparties.co" + data.image.url}`,
         trailerLink: data.trailerLink,
-        thumbnail: `${this._apiURL}${data.image.url}`,
-        movieId: data.id,
+        thumbnail: `${
+          "https://api.nomoreparties.co" + data.image.formats.thumbnail.url
+        }`,
         nameRU: data.nameRU,
         nameEN: data.nameEN,
       }),
@@ -64,9 +74,12 @@ class Api {
   deleteMovie(id) {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
       credentials: "include",
-    }).then(this._getResponse);
+    }).then((res) => this._getResponseData(res));
   }
 }
 

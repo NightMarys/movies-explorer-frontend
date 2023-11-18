@@ -85,15 +85,16 @@ function Profile(props) {
           </ul>
           <button
             className="profile__button-save"
+            onClick={handleEditClick}
             type="submit"
             aria-label="saveButton"
           >
             Редактировать
           </button>
         </form>
-        <Link to="/" className="profile__submit-button">
+        <button onClick={props.onLogOut} className="profile__submit-button">
           Выйти из аккаунта
-        </Link>
+        </button>
       </section>
     </main>
   );

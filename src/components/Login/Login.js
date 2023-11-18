@@ -5,7 +5,7 @@ import logo from "../../images/HeaderLogo.svg";
 import useValidation from "../../utils/useValidation";
 
 function Login(props) {
-  const { formValues, handleChange, resetForm } = useValidation();
+  const { formValues, handleChange, resetForm, errors } = useValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -37,6 +37,7 @@ function Login(props) {
             value={formValues.email || ""}
             onChange={handleChange}
           />
+          <span className="auth__error">{errors.email || ""}</span>
           <label htmlFor="password" className="auth__label">
             Пароль
           </label>
@@ -51,6 +52,7 @@ function Login(props) {
             onChange={handleChange}
             minLength="6"
           />
+          <span className="auth__error">{errors.password || ""}</span>
           <button type="submit" className="auth__save-btn auth__save-btn_l">
             Войти
           </button>

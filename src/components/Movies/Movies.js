@@ -1,7 +1,6 @@
 import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-// import moviesList from "../../utils/moviesList";
 
 function Movies(props) {
   const [initialMovies, setInitialMovies] = React.useState([]);
@@ -130,7 +129,7 @@ function Movies(props) {
         isFilterOn={isFilterOn}
       />
       <MoviesCardList
-        moviesList={moviesList}
+        movies={moviesList}
         moviesNotFound={moviesNotFound}
         searchError={props.searchError}
         isLoading={props.isLoading}
@@ -143,3 +142,18 @@ function Movies(props) {
 }
 
 export default Movies;
+
+//   return (
+//     <main className="content">
+//       <SearchForm
+//
+//       />
+//       <MoviesCardList
+//         saved={false}
+//         moviesList={moviesList}
+//       />
+//     </main>
+//   );
+// }
+//
+// export default Movies;

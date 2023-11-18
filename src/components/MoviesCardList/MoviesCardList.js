@@ -1,23 +1,29 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { PARAMS } from "../../utils/constants";
+import MoreMovies from "../MoreMovies/MoreMovies";
 import Preloader from "../Preloader/Preloader";
+import { PARAMS } from "../../utils/constants";
 
 function MoviesCardList(props) {
   const [moviesList, setMoviesList] = React.useState([]);
-  const [moviesParams, setMoviesParams] = React.useState({});
+  const [moviesCardsParams, setMoviesCardsParams] = React.useState({});
 
-  const location = React.useLocation();
+  const location = useLocation();
 
   React.useEffect(() => {
-    if (location.pathname === "/movies" && props.movies.length) {
+    if (
+      location.pathname === "/movies" &&
+      props.movies &&
+      props.movies.length
+    ) {
       const result = props.movies.filter((card, index) => {
-        return index < moviesParams.current;
+        return index < moviesCardsParams.current;
       });
       setMoviesList(result);
     }
-  }, [location.pathname, props.movies, moviesParams]);
+  }, [location.pathname, props.movies, moviesCardsParams]);
 
   React.useEffect(() => {
     if (location.pathname === "/saved-movies") {
@@ -48,25 +54,25 @@ function MoviesCardList(props) {
 
   function handleResize() {
     if (window.innerWidth >= PARAMS.base.width) {
-      setMoviesParams(PARAMS.base.cards);
+      setMoviesCardsParams(PARAMS.base.cards);
     } else if (
       window.innerWidth < PARAMS.base.width &&
       window.innerWidth >= PARAMS.desktop.width
     ) {
-      setMoviesParams(PARAMS.desktop.cards);
+      setMoviesCardsParams(PARAMS.desktop.cards);
     } else if (
       window.innerWidth < PARAMS.desktop.width &&
       window.innerWidth >= PARAMS.tablet.width
     ) {
-      setMoviesParams(PARAMS.tablet.cards);
+      setMoviesCardsParams(PARAMS.tablet.cards);
     } else {
-      setMoviesParams(PARAMS.mobile.cards);
+      setMoviesCardsParams(PARAMS.mobile.cards);
     }
   }
 
   function handleClickOnMoreButton() {
     const start = moviesList.length;
-    const end = start + moviesParams.more;
+    const end = start + moviesCardsParams.more;
     if (props.movies.length - start > 0) {
       const additionalCards = props.movies.slice(start, end);
       setMoviesList([...moviesList, ...additionalCards]);
@@ -92,10 +98,10 @@ function MoviesCardList(props) {
           и&nbsp;попробуйте ещё раз.
         </p>
       )}
-      {props.movies.length !== 0 && !props.searchError && (
+      {props.movies && props.movies.length !== 0 && !props.searchError && (
         <>
           <ul className="movies__card-list">
-            {moviesList.map((movie) => (
+            {moviesList.map((movie, i) => (
               <MoviesCard
                 movie={movie}
                 key={movie.id || movie._id}
@@ -106,15 +112,7 @@ function MoviesCardList(props) {
             ))}
           </ul>
           {moviesList.length < props.movies.length && (
-            <div className="movies__wrapper">
-              <button
-                type="button"
-                className="movies__button-more"
-                onClick={handleClickOnMoreButton}
-              >
-                Ещё
-              </button>
-            </div>
+            <MoreMovies clickOnMoreButton={handleClickOnMoreButton} />
           )}
         </>
       )}

@@ -5,7 +5,7 @@ import logo from "../../images/HeaderLogo.svg";
 import useValidation from "../../utils/useValidation";
 
 function Register(props) {
-  const { formValues, handleChange } = useValidation();
+  const { formValues, handleChange, errors } = useValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -37,6 +37,7 @@ function Register(props) {
             onChange={handleChange}
             value={formValues.name || ""}
           />
+          <span className="auth__error">{errors.name || ""}</span>
           <label htmlFor="email" className="auth__label">
             E-mail
           </label>
@@ -52,6 +53,7 @@ function Register(props) {
             value={formValues.email || ""}
             onChange={handleChange}
           />
+          <span className="auth__error">{errors.email || ""}</span>
           <label htmlFor="password" className="auth__label">
             Пароль
           </label>
@@ -66,6 +68,7 @@ function Register(props) {
             onChange={handleChange}
             minLength="6"
           />
+          <span className="auth__error">{errors.password || ""}</span>
           <button type="submit" className="auth__save-btn">
             Зарегистрироваться
           </button>

@@ -13,7 +13,6 @@ function Checkbox(props) {
           onChange={(evt) => props.onFilterChange(evt.target.checked)}
         />
         <h2 className="checkbox__name"> Короткометражки </h2>
-        Короткометражки
       </label>
     </div>
   );
