@@ -8,6 +8,8 @@ Frontend diplom project
 Ссылки:
 [URL] (https://thatsmovies.nomoredomainsrocks.ru/)
 
+[Ссылка на ПР] (https://github.com/NightMarys/movies-explorer-frontend/pull/2)
+
 [Макет для Figma](https://disk.yandex.ru/d/YvbUcDL0w0Gg6g)
 
 [Домен сервера](https://api.thatsmovies.nomoredomainsrocks.ru/)
