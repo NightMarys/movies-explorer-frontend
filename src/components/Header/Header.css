@@ -13,9 +13,6 @@
 .header_loggedin {
     background-color: #202020;
 }
-.header_auth {
-    justify-content: center;
-}
 
 .header__logo {
     width: 38px;
@@ -99,6 +96,10 @@
 .header__wrapper {
     display: none;
     position: relative;
+}
+
+.header__wrapper_loggedin {
+  background-color: #073042;
 }
 
 .header__wrapper>.navigation {

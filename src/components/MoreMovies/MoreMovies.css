@@ -1,0 +1,25 @@
+.more-movies__button {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  border: none;
+  color: #fff;
+  background-color: #2F2F2F;
+  border-radius: 6px;
+  padding: 11px 20px 9px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 76px auto 80px;
+  cursor: pointer;
+}
+
+.more-movies__wrapper {
+  min-height: 140px;
+  display: flex;
+}
+
+@media screen and (min-width: 1279px) {
+  .more-movies__button {
+    margin-top: 50px;
+  }
+}

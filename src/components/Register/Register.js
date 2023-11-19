@@ -1,29 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/HeaderLogo.svg";
+import useValidation from "../../utils/useValidation";
 
 function Register(props) {
-  const { handleRegister } = props;
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const { formValues, handleChange, errors, isValid } = useValidation();
 
-  function handleName(e) {
-    setName(e.target.value);
-  }
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    handleRegister(password, email, name);
-  }
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    props.onRegister(formValues.name, formValues.email, formValues.password);
+  };
 
-  return (
+  return props.loggedIn ? (
+    <Navigate to="/" replace />
+  ) : (
     <main className="content">
       <div className="auth">
         <Link className="auth__link" to="/">
@@ -43,8 +34,10 @@ function Register(props) {
             required
             minLength="2"
             maxLength="30"
-            onChange={handleName}
+            onChange={handleChange}
+            value={formValues.name || ""}
           />
+          <span className="auth__error">{errors.name || ""}</span>
           <label htmlFor="email" className="auth__label">
             E-mail
           </label>
@@ -57,9 +50,10 @@ function Register(props) {
             required
             minLength="2"
             maxLength="30"
-            value={email || ""}
-            onChange={handleEmail}
+            value={formValues.email || ""}
+            onChange={handleChange}
           />
+          <span className="auth__error">{errors.email || ""}</span>
           <label htmlFor="password" className="auth__label">
             Пароль
           </label>
@@ -70,11 +64,12 @@ function Register(props) {
             name="password"
             placeholder="Пароль"
             required
-            value={password || ""}
-            onChange={handlePassword}
+            value={formValues.password || ""}
+            onChange={handleChange}
             minLength="6"
           />
-          <button type="submit" className="auth__save-btn">
+          <span className="auth__error">{errors.password || ""}</span>
+          <button type="submit" className="auth__save-btn" disabled={!isValid}>
             Зарегистрироваться
           </button>
         </form>

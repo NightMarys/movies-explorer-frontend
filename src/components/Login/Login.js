@@ -1,26 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../Register/Register.css";
 import logo from "../../images/HeaderLogo.svg";
+import useValidation from "../../utils/useValidation";
 
 function Login(props) {
-  const { setLoggedIn } = props;
+  const { formValues, handleChange, resetForm, errors, isValid } =
+    useValidation();
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    props.onLogin(formValues.email, formValues.password);
+    resetForm();
+  };
 
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    setLoggedIn(password, email);
-  }
-
-  return (
+  return props.loggedIn ? (
+    <Navigate to="/movies" replace />
+  ) : (
     <main className="content">
       <div className="auth">
         <Link className="auth__link" to="/">
@@ -28,7 +24,9 @@ function Login(props) {
         </Link>
         <h1 className="auth__title">Рады видеть!</h1>
         <form className="auth__form" onSubmit={handleSubmit}>
-          <h3 className="auth__input-name">E-mail</h3>
+          <label htmlFor="email" className="auth__label">
+            E-mail
+          </label>
           <input
             type="email"
             className="auth__input"
@@ -37,10 +35,13 @@ function Login(props) {
             required
             minLength="2"
             maxLength="30"
-            value={email || ""}
-            onChange={handleEmail}
+            value={formValues.email || ""}
+            onChange={handleChange}
           />
-          <h3 className="auth__input-name">Пароль</h3>
+          <span className="auth__error">{errors.email || ""}</span>
+          <label htmlFor="password" className="auth__label">
+            Пароль
+          </label>
           <input
             type="password"
             className="auth__input"
@@ -48,11 +49,16 @@ function Login(props) {
             name="password"
             placeholder="Пароль"
             required
-            value={password || ""}
-            onChange={handlePassword}
+            value={formValues.password || ""}
+            onChange={handleChange}
             minLength="6"
           />
-          <button type="submit" className="auth__save-btn auth__save-btn_l">
+          <span className="auth__error">{errors.password || ""}</span>
+          <button
+            type="submit"
+            className="auth__save-btn auth__save-btn_l"
+            disabled={!isValid}
+          >
             Войти
           </button>
         </form>
