@@ -5,7 +5,8 @@ import logo from "../../images/HeaderLogo.svg";
 import useValidation from "../../utils/useValidation";
 
 function Login(props) {
-  const { formValues, handleChange, resetForm, errors } = useValidation();
+  const { formValues, handleChange, resetForm, errors, isValid } =
+    useValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -53,7 +54,11 @@ function Login(props) {
             minLength="6"
           />
           <span className="auth__error">{errors.password || ""}</span>
-          <button type="submit" className="auth__save-btn auth__save-btn_l">
+          <button
+            type="submit"
+            className="auth__save-btn auth__save-btn_l"
+            disabled={!isValid}
+          >
             Войти
           </button>
         </form>

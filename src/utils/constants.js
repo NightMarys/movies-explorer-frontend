@@ -16,15 +16,15 @@ export const PARAMS = {
   base: {
     width: 1280,
     cards: {
-      current: 16,
-      more: 4,
+      current: 12,
+      more: 3,
     },
   },
   desktop: {
     width: 1024,
     cards: {
-      current: 12,
-      more: 3,
+      current: 8,
+      more: 2,
     },
   },
   tablet: {

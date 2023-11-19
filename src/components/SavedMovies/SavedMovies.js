@@ -2,6 +2,7 @@ import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 // import moviesList from "../../utils/moviesList";
+import Preloader from "../Preloader/Preloader";
 
 function SavedMovies(props) {
   const [moviesList, setMoviesList] = React.useState([]);
@@ -138,12 +139,16 @@ function SavedMovies(props) {
         onFilterChange={handleFilterClick}
         isFilterOn={isFilterOn}
       />
-      <MoviesCardList
-        movies={moviesList}
-        moviesNotFound={moviesNotFound}
-        onMovieDelete={props.onMovieDelete}
-        savedMovies={props.savedMovies}
-      />
+      {isSearching ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          movies={moviesList}
+          moviesNotFound={moviesNotFound}
+          onMovieDelete={props.onMovieDelete}
+          savedMovies={props.savedMovies}
+        />
+      )}
     </main>
   );
 }

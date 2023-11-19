@@ -37,14 +37,12 @@ const {
 
 function App(props) {
   const [currentUser, setCurrentUser] = useState({});
-  const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [requestError, setRequestError] = useState("");
   const [successfulUpdate, setSuccessfulUpdate] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -84,38 +82,19 @@ function App(props) {
     }
   }, [loggedIn]);
 
-  const getMovies = () => {
-    setLoading(true);
-    moviesApi
-      .getMovies()
-      .then((movies) => {
-        setMovies(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setLoading(false));
-  };
-  useEffect(() => {
-    if (loggedIn) {
-      getMovies();
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
-    }
-  }, [loggedIn]);
-
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      setLoading(true);
       auth
         .getToken(token)
-        .then((data) => {
-          if (data) {
-            setUserEmail(data.data.email);
+        .then((res) => {
+          console.log(res);
+          if (res) {
+            setCurrentUser(res);
             setLoggedIn(true);
-            navigate("/movies");
+            navigate(`${location.pathname}${location.search}`, {
+              replace: true,
+            });
           }
         })
         .catch((err) => {
@@ -125,18 +104,15 @@ function App(props) {
           if (err === 401) {
             console.log("Переданный токен некорректен");
           }
-        })
-        .finally(() => setLoading(false));
+        });
     }
-  }, [navigate, loggedIn]);
+  }, [loggedIn]);
 
   function handleLogIn(email, password) {
-    setLoading(true);
     auth
       .login(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setCurrentUser(res);
         setLoggedIn(true);
         navigate("/movies", { replace: true });
       })
@@ -147,28 +123,27 @@ function App(props) {
         if (err === 401) {
           console.log("пользователь с email не найден");
         }
-      })
-      .finally(() => setLoading(false));
+      });
   }
 
   function handleRegistration(name, email, password) {
-    setLoading(true);
+    console.log(name, email, password);
     auth
       .register(name, email, password)
       .then((res) => {
-        setCurrentUser(res);
+        console.log(res);
+        handleLogIn(email, password);
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
         if (err === 400) {
           console.log("некорректно заполнено одно из полей");
         }
-      })
-      .finally(() => setLoading(false));
+      });
   }
 
   function handleSignOut() {
-    localStorage.removeItem("jwt");
+    localStorage.clear();
     setCurrentUser("");
     setLoggedIn(false);
     navigate("/");
@@ -221,9 +196,11 @@ function App(props) {
   }
 
   function handleUpdateUser(name, email) {
+    console.log(name, email);
     api
       .patchUserInfo(name, email)
       .then((res) => {
+        console.log(res);
         setCurrentUser(res);
         setSuccessfulUpdate(true);
       })
@@ -268,7 +245,6 @@ function App(props) {
                   onMovieDelete={handleDeleteMovie}
                   onMovieSave={handleSaveMovie}
                   savedMovies={savedMovies}
-                  movies={movies}
                 />
               }
             />
@@ -291,7 +267,7 @@ function App(props) {
                   onLoading={isLoading}
                   onProfile={handleUpdateUser}
                   requestError={requestError}
-                  onUpdate={successfulUpdate}
+                  isProfileSaved={successfulUpdate}
                   loggedIn={loggedIn}
                   element={Profile}
                 />

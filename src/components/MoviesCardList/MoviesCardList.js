@@ -89,10 +89,10 @@ function MoviesCardList(props) {
     <section className="movies">
       {props.isLoading && props.movies.length === 0 && <Preloader />}
       {props.moviesNotFound && (
-        <p className="movies-card-list__notification">Ничего не&nbsp;найдено</p>
+        <p className="movies__notification">Ничего не&nbsp;найдено</p>
       )}
       {props.searchError && (
-        <p className="movies-card-list__notification">
+        <p className="movies__notification">
           Во&nbsp;время запроса произошла ошибка. Возможно, проблема
           с&nbsp;соединением или сервер недоступен. Подождите немного
           и&nbsp;попробуйте ещё раз.

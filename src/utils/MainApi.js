@@ -11,7 +11,7 @@ class Api {
       : res.json().then((res) => Promise.reject(`${res.message}`));
   }
 
-  getUserInfo(token) {
+  getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ class Api {
   }
 
   // Редактирование профиля
-  patchUserInfo(data) {
+  patchUserInfo(name, email) {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         "Content-Type": "application/json",
@@ -30,8 +30,8 @@ class Api {
       credentials: "include",
       method: "PATCH",
       body: JSON.stringify({
-        name: data.name,
-        email: data.email,
+        name: name,
+        email: email,
       }),
     }).then((res) => this._getResponseData(res));
   }

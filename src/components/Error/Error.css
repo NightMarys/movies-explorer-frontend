@@ -22,12 +22,14 @@
     margin: 0 auto;
 }
 
-.error__link {
+.error__btn {
+    all: unset;
+    cursor: pointer;
     font-size: 14px;
     line-height: 16.94px;
     color: #4285F4;
     text-decoration: none;
-    padding-top: 184px;
+    margin-top: 184px;
 }
 
 .error__link:hover {
@@ -50,7 +52,7 @@
         line-height: 14.52px;
     }
 
-    .error__link {
+    .error__btn {
         font-size: 12px;
         line-height: 14.52px;
         padding-top: 284px;

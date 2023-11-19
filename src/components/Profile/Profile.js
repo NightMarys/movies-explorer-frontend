@@ -23,15 +23,15 @@ function Profile(props) {
   React.useEffect(() => {
     resetForm(currentUser, false);
   }, [resetForm, currentUser]);
-
+  /*
   React.useEffect(() => {
     props.onUpdate
       ? setSuccessfulMessage("Ваша информация успешно обновлена.")
       : setSuccessfulMessage("");
   }, [props.onUpdate]);
-
+*/
   function handleEditClick() {
-    setSuccessfulMessage("");
+    setSuccessfulMessage("Ваша информация успешно обновлена.");
     setEditing(!isEditing);
   }
 
@@ -47,47 +47,56 @@ function Profile(props) {
         <form className="profile__form" onSubmit={handleSubmit}>
           <ul className="profile__input-list">
             <li className="profile__input-wrapper">
-              <label htmlFor="name" className="profile__label">
-                Имя
-              </label>
-              <input
-                value={formValues.name || ""}
-                onChange={handleChange}
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Имя"
-                className="profile__input profile__input_data_name"
-                required
-                minLength="2"
-                maxLength="200"
-                disabled={isEditing && !props.onLoading ? false : true}
-              />
+              <div className="profile__string">
+                <label htmlFor="name" className="profile__label">
+                  Имя
+                </label>
+                <input
+                  value={formValues.name || ""}
+                  onChange={handleChange}
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Имя"
+                  className="profile__input profile__input_data_name"
+                  required
+                  minLength="2"
+                  maxLength="200"
+                />
+              </div>
+              <span className="profile__error">{errors.name || ""}</span>
             </li>
             <li className="profile__input-wrapper">
-              <label htmlFor="email" className="profile__label">
-                E-mail
-              </label>
-              <input
-                value={formValues.email || ""}
-                onChange={handleChange}
-                id="email"
-                name="email"
-                type="text"
-                placeholder="Email"
-                className="profile__input profile__input_data_email"
-                required
-                minLength="2"
-                maxLength="40"
-                disabled={isEditing && !props.onLoading ? false : true}
-              />
+              <div className="profile__string">
+                <label htmlFor="email" className="profile__label">
+                  E-mail
+                </label>
+                <input
+                  value={formValues.email || ""}
+                  onChange={handleChange}
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="Email"
+                  className="profile__input profile__input_data_email"
+                  required
+                  minLength="2"
+                  maxLength="40"
+                />
+              </div>
+              <span className="profile__error">{errors.email || ""}</span>
             </li>
           </ul>
+
+          <span className="profile__success">{successfulMessage}</span>
           <button
             className="profile__button-save"
             onClick={handleEditClick}
             type="submit"
             aria-label="saveButton"
+            disabled={
+              (isValid && !isCurrentUser ? false : true) || props.onLoading
+            }
           >
             Редактировать
           </button>

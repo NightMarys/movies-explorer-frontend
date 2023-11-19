@@ -51,6 +51,7 @@ function useValidation() {
     handleChange,
     resetForm,
     setIsValid,
+    setFormValues,
   };
 }
 

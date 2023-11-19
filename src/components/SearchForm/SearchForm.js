@@ -36,7 +36,7 @@ function SearchForm(props) {
 
   return (
     <div className="search-form">
-      <form className="search-form__search" noValidate>
+      <form className="search-form__search" noValidate onSubmit={handleSubmit}>
         <input
           id="movie-input"
           name="movie"

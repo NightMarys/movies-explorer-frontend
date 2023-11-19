@@ -5,7 +5,7 @@ import logo from "../../images/HeaderLogo.svg";
 import useValidation from "../../utils/useValidation";
 
 function Register(props) {
-  const { formValues, handleChange, errors } = useValidation();
+  const { formValues, handleChange, errors, isValid } = useValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -69,7 +69,7 @@ function Register(props) {
             minLength="6"
           />
           <span className="auth__error">{errors.password || ""}</span>
-          <button type="submit" className="auth__save-btn">
+          <button type="submit" className="auth__save-btn" disabled={!isValid}>
             Зарегистрироваться
           </button>
         </form>

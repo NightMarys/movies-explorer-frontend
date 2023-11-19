@@ -1,6 +1,7 @@
 import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Preloader from "../Preloader/Preloader";
 
 function Movies(props) {
   const [initialMovies, setInitialMovies] = React.useState([]);
@@ -128,15 +129,19 @@ function Movies(props) {
         onFilterChange={handleFilterClick}
         isFilterOn={isFilterOn}
       />
-      <MoviesCardList
-        movies={moviesList}
-        moviesNotFound={moviesNotFound}
-        searchError={props.searchError}
-        isLoading={props.isLoading}
-        onMovieSave={props.onMovieSave}
-        onMovieDelete={props.onMovieDelete}
-        savedMovies={props.savedMovies}
-      />
+      {isSearching ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          movies={moviesList}
+          moviesNotFound={moviesNotFound}
+          searchError={props.searchError}
+          isLoading={props.isLoading}
+          onMovieSave={props.onMovieSave}
+          onMovieDelete={props.onMovieDelete}
+          savedMovies={props.savedMovies}
+        />
+      )}
     </main>
   );
 }
